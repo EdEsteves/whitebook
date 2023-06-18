@@ -12,11 +12,14 @@ function App() {
   const { setSelectedPlanId, setSelectedPlanInfo } = useContext(SelectedPlanContext);
 
 	useEffect(() => {
-    fetchPlansList().then((res) => {
-      const result = findLowestPriorityObject(res)
+    fetchPlansList().then((r) => {
+      const result = findLowestPriorityObject(r)
 
-      setSelectedPlanId(result.id)
-      setSelectedPlanInfo(result)
+      if(result) {
+        setSelectedPlanId(result.id)
+        setSelectedPlanInfo(result)
+      }
+
     }).catch(() => {
       console.error("Something wen wrong with request!");
     });
