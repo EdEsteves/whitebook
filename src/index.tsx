@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { SelectedPlanProvider } from './contexts/SelectedPlanContext';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <SelectedPlanProvider>
+      <App />
+    </SelectedPlanProvider>
   </React.StrictMode>
 );
 

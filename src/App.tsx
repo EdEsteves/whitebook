@@ -1,32 +1,31 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 
-import useFetchPlans, { PlansList } from './hooks/useFetchPlans';
+import useFetchPlans from './hooks/useFetchPlans';
+import { findLowestPriorityObject } from './utils/ReducerByPriority'
 
-import './App.css';
-
+import SelectedPlanContext from "./contexts/SelectedPlanContext";
 import Router from './router';
 
+
 function App() {
-  const [plansList, setPlansList] = useState<PlansList>([]);
-
 	const { fetchPlansList } = useFetchPlans();
-
+  const { setSelectedPlanId, setSelectedPlanInfo } = useContext(SelectedPlanContext);
 
 	useEffect(() => {
     fetchPlansList().then((res) => {
-      setPlansList(res);
+      const result = findLowestPriorityObject(res)
+
+      setSelectedPlanId(result.id)
+      setSelectedPlanInfo(result)
     }).catch(() => {
       console.error("Something wen wrong with request!");
     });
   }, []);
-
-  
-  if(!plansList.length) return null
-  
-  console.log('plansList >>', plansList)
   
   return (
-    <Router />
+    <>
+      <Router />
+    </>
   );
 }
 
