@@ -20,12 +20,10 @@ export type Plan = {
 	acceptsCoupon: boolean;
 };
 
-type PlansApiRes = {
-  results: PlansList;
-  count?: number;
-};
 
 export type PlansList = Array<Plan>;
+
+type PlansApiRes = PlansList;
 
 const useFetchPlans = () => {
   return {
@@ -34,15 +32,12 @@ const useFetchPlans = () => {
 };
 
 
-const fetchPlansList = async (
-  plansList: PlansList,
-) => {
+const fetchPlansList = async () => {
   const url = 'https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/offer'
 
   const { data } = await axios.get<PlansApiRes>(url);
-  const countResults = data.count === undefined ? 0 : data.count;
 
-  return { count: countResults, results: [...plansList, ...data.results] };
+  return data;
 };
 
 export default useFetchPlans;
