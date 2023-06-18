@@ -20,7 +20,6 @@ export type Plan = {
 	acceptsCoupon: boolean;
 };
 
-
 export type PlansList = Array<Plan>;
 
 type PlansApiRes = PlansList;
