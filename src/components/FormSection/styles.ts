@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const FormSection = styled.section`
-    flex: 1 1 100%;
+    flex: 1 0 100%;
     order: 2;
     
     @media screen and (min-width: 1025px) {
-        flex: 1 1 50%;
+        flex: 1 0 50%;
         order: 1;
     }
 `
