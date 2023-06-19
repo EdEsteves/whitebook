@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const Orderplaced = () => {
 	return (
 		<>
+			<Header backPath={'/checkout'} />
 			<span>Teste Orderplaced</span>
-			<Link to={"/checkout"}>Checkout</Link>
 		</>
 	)
 }

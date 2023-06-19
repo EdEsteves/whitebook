@@ -1,8 +1,7 @@
 import { useContext } from "react";
 
 import SelectedPlanContext from "../contexts/SelectedPlanContext";
-
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const Checkout = () => {
 	const { selectedPlanInfo } = useContext(SelectedPlanContext);
@@ -11,9 +10,8 @@ const Checkout = () => {
 
 	return (
 		<>
-			<Link to={"/"}>Home</Link>
+			<Header backPath={'/'} />
 			<span>Teste checkout</span>
-			<Link to={"/checkout/orderplaced"}>OrderPlaced</Link>
 		</>
 	)
 }

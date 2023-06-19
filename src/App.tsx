@@ -2,8 +2,8 @@ import { useEffect, useContext } from "react";
 
 import useFetchPlans from './hooks/useFetchPlans';
 import { findLowestPriorityObject } from './utils/ReducerByPriority'
+import SelectedPlanContext from './contexts/SelectedPlanContext';
 
-import SelectedPlanContext from "./contexts/SelectedPlanContext";
 import Router from './router';
 
 
@@ -23,10 +23,11 @@ function App() {
     }).catch(() => {
       console.error("Something wen wrong with request!");
     });
-  }, []);
+  });
   
   return (
     <>
+      {/* <Header backPath={'/'} /> */}
       <Router />
     </>
   );
