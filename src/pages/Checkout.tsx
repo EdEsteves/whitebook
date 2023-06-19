@@ -1,8 +1,10 @@
 import { useContext } from "react";
 
 import SelectedPlanContext from "../contexts/SelectedPlanContext";
+
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import FormSection from "../components/FormSection";
+import PlansSection from "../components/PlansSection";
 
 const Checkout = () => {
 	const { selectedPlanInfo } = useContext(SelectedPlanContext);
@@ -12,8 +14,10 @@ const Checkout = () => {
 	return (
 		<>
 			<Header backPath={'/'} />
-			<span>Teste checkout</span>
-			<Link to={'/checkout/orderplaced'}>Go to OrderPlaced</Link>
+			<div className='container'>
+				<FormSection />
+				<PlansSection />
+			</div>
 		</>
 	)
 }

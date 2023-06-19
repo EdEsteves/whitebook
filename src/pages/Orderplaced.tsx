@@ -4,7 +4,9 @@ const Orderplaced = () => {
 	return (
 		<>
 			<Header backPath={'/checkout'} />
-			<span>Teste Orderplaced</span>
+			<div className="container">
+				<span>Teste Orderplaced</span>
+			</div>
 		</>
 	)
 }

@@ -5,10 +5,11 @@ export const HeaderContainer = styled.header`
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	padding: 18px;
 	
 	@media screen and (min-width: 1025px) {
 		padding: 32px 68px;
-  }
+  	}
 
 	a {
 		position: absolute;
@@ -18,7 +19,7 @@ export const HeaderContainer = styled.header`
 		
 		@media screen and (min-width: 1025px) {
 			left: 68px;
-  	}
+  		}
 	}
 `
 
