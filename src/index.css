@@ -30,6 +30,7 @@ body {
 
   @media screen and (min-width: 1025px) {
     width: auto;
+    justify-content: space-between;
     padding-right: 18%;
     padding-left: 18%;
   }

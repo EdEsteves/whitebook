@@ -5,11 +5,22 @@ export const FormSection = styled.section`
     order: 2;
     
     @media screen and (min-width: 1025px) {
-        flex: 1 0 50%;
+        flex: 0 0 330px;
         order: 1;
     }
 `
 
-export const FormSectionTitle = styled.h4``
+export const FormSectionTitle = styled.h4`
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
 
-export const FormSectionText = styled.span``
+    margin-bottom: 8px;
+`
+
+export const FormSectionText = styled.span`
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 30px;
+`

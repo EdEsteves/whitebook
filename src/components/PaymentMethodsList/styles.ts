@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 
-export const PaymentMethodsContainer = styled.div``
+export const PaymentMethodsContainer = styled.div`
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+	margin-bottom: 30px;
+`
 
 export const PaymentMethodsList = styled.ul`
 	display: flex;

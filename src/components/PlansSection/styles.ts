@@ -5,7 +5,15 @@ export const PlansSection = styled.section`
     order: 1;
     
     @media screen and (min-width: 1025px) {
-        flex: 1 0 50%;
+        flex: 0 0 330px;
         order: 2;
     }
+`
+
+export const PlansSectionTitle = styled.h4`
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+
+    margin-bottom: 8px;
 `

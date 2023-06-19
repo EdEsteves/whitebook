@@ -3,7 +3,7 @@ import * as S from './styles'
 const PlansSection = () => {
   return (
     <S.PlansSection>
-      <span>teste</span>
+      <S.PlansSectionTitle>Confira o seu plano:</S.PlansSectionTitle>
     </S.PlansSection>
   )
 };
