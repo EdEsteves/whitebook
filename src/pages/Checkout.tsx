@@ -13,7 +13,7 @@ const Checkout = () => {
 		<>
 			<Header backPath={'/'} />
 			<span>Teste checkout</span>
-			<Link to={'/checkout'}>Go to OrderPlaced</Link>
+			<Link to={'/checkout/orderplaced'}>Go to OrderPlaced</Link>
 		</>
 	)
 }
