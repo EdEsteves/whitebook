@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { SelectedPlanProvider } from './contexts/SelectedPlanContext';
+import { PlansListProvider } from './contexts/PlansListContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <SelectedPlanProvider>
-      <App />
-    </SelectedPlanProvider>
+    <PlansListProvider>
+      <SelectedPlanProvider>
+        <App />
+      </SelectedPlanProvider>
+    </PlansListProvider>
   </React.StrictMode>
 );
 
