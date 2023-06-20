@@ -26,7 +26,12 @@ function App() {
     }).catch(() => {
       console.error("Something wen wrong with request!");
     });
-  }, [fetchPlansList,setSelectedPlanId,setSelectedPlanInfo,setPlansList]);
+  }, [
+    fetchPlansList,
+    setSelectedPlanId,
+    setSelectedPlanInfo,
+    setPlansList
+  ]);
 
   if(!plansList.length) return null
   

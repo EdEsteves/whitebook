@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import PlansListContext from "../../contexts/PlansListContext";
 
 import * as S from './styles'
+import { PlansList } from "../PlansList/styles";
 
 const PlansSection = () => {
   const { plansList } = useContext(PlansListContext);
@@ -15,6 +16,7 @@ const PlansSection = () => {
   return (
     <S.PlansSection>
       <S.PlansSectionTitle>Confira o seu plano:</S.PlansSectionTitle>
+      <PlansList />
     </S.PlansSection>
   )
 };
