@@ -5,6 +5,6 @@ export const PlansList = styled.ul`
 	flex-direction: column;
   	gap: 12px 0;
 	list-style: none;
-	margin: 0 0 20px;
+	margin: 30px 0 20px;
 	padding: 0;
 `

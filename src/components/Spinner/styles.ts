@@ -17,7 +17,7 @@ export const SpinnerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 30px;
 `
 
 export const Spinner = styled.div<SpinnerProps>`

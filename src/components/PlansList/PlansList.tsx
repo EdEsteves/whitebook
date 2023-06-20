@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import PlansListContext from "../../contexts/PlansListContext";
+import SelectedPlanContext from "../../contexts/SelectedPlanContext";
 
 import PlanCard from '../PlanCard';
 
@@ -8,17 +9,12 @@ import * as S from './styles'
 
 const PlansList = () => {
   const { plansList } = useContext(PlansListContext);
-
-	useEffect(() => {
-    console.log('Lista de planos', plansList)
-  });
+  const { selectedPlanId } = useContext(SelectedPlanContext);
 
   return (
-    <>
-      <S.PlansList>
-        {plansList.map(() => <PlanCard />)}
-      </S.PlansList>
-   </>
+    <S.PlansList>
+      {plansList.map((plan, index) => <PlanCard planInfo={plan} key={index} selected={plan.id === selectedPlanId} />)}
+    </S.PlansList>
   )
 };
 

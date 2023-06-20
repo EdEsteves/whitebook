@@ -6,17 +6,20 @@ import reportWebVitals from './reportWebVitals';
 
 import { SelectedPlanProvider } from './contexts/SelectedPlanContext';
 import { PlansListProvider } from './contexts/PlansListContext';
+import { FakeLoginProvider } from './contexts/FakeLoginContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <PlansListProvider>
-      <SelectedPlanProvider>
-        <App />
-      </SelectedPlanProvider>
-    </PlansListProvider>
+    <FakeLoginProvider>
+      <PlansListProvider>
+        <SelectedPlanProvider>
+          <App />
+        </SelectedPlanProvider>
+      </PlansListProvider>
+    </FakeLoginProvider>
   </React.StrictMode>
 );
 

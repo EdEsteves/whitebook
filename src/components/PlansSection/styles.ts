@@ -34,6 +34,8 @@ export const PlansSectionHelpTooltip = styled.div`
     align-items: center;
 
     svg {
+        cursor: pointer;
+        
         &:hover {
 
             & + span {
