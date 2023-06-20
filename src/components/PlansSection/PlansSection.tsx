@@ -1,22 +1,32 @@
-// import { useContext } from "react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import PlansListContext from "../../contexts/PlansListContext";
 
+import PlansList from "../PlansList/";
+import Icon from '../Icon';
+import { ReactComponent as IconHelp } from '../../assets/icon-help.svg';
+
 import * as S from './styles'
-import { PlansList } from "../PlansList/styles";
+import Spinner from "../Spinner/Spinner";
 
 const PlansSection = () => {
   const { plansList } = useContext(PlansListContext);
 
-	useEffect(() => {
-    console.log('Lista de planos', plansList)
-  });
-
   return (
     <S.PlansSection>
       <S.PlansSectionTitle>Confira o seu plano:</S.PlansSectionTitle>
-      <PlansList />
+
+      {plansList.length ? (
+        <>
+          <PlansList />
+          <S.PlansSectionHelpTooltip>
+            <S.PlansSectionText>Sobre a cobrança</S.PlansSectionText>
+            <Icon svg={<IconHelp />} />
+            <S.PlansSectionHelpTooltipText>Tooltip Text</S.PlansSectionHelpTooltipText>
+          </S.PlansSectionHelpTooltip>
+        </>
+      ) : <Spinner color={'#191847'} />}
+
     </S.PlansSection>
   )
 };

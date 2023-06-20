@@ -11,7 +11,7 @@ import Router from './router';
 function App() {
 	const { fetchPlansList } = useFetchPlans();
   const { setSelectedPlanId, setSelectedPlanInfo } = useContext(SelectedPlanContext);
-  const { plansList, setPlansList } = useContext(PlansListContext);
+  const { setPlansList } = useContext(PlansListContext);
 
 	useEffect(() => {
     fetchPlansList().then((r) => {
@@ -31,9 +31,7 @@ function App() {
     setSelectedPlanId,
     setSelectedPlanInfo,
     setPlansList
-  ]);
-
-  if(!plansList.length) return null
+   ]);
   
   return (
     <>
