@@ -3,7 +3,7 @@ import Header from "../components/Header";
 const Orderplaced = () => {
 	return (
 		<>
-			<Header backPath={'/checkout'} />
+			<Header logout={true} />
 			<div className="container">
 				<span>Teste Orderplaced</span>
 			</div>

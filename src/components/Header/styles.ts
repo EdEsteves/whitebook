@@ -11,11 +11,15 @@ export const HeaderContainer = styled.header`
 		padding: 32px 68px;
   	}
 
-	a {
+	a,
+	button {
 		position: absolute;
-    top: 50%;
-    left: 68px;
-    transform: translateY(-50%);
+		top: 50%;
+		left: 68px;
+		transform: translateY(-50%);
+		border: none;
+    	background: none;
+		cursor: pointer;
 		
 		@media screen and (min-width: 1025px) {
 			left: 68px;

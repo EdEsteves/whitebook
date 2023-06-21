@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import FakeLogin from "../components/FakeLogin";
 
 const Home = () => {
 	return (
 		<>
 			<Header />
-			<span>Teste Home</span>
-			<Link to={'/checkout'}>Go to Checkout</Link>
+			<div className="container">
+				<FakeLogin />
+			</div>
 		</>
 	)
 }

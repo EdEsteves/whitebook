@@ -10,6 +10,15 @@ export const PlansSection = styled.section`
     }
 `
 
+export const PlansSectionUser = styled.span`
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #F4F3F6;
+    border-radius: 12px;
+    padding: 3px 12px;
+`
+
+
 export const PlansSectionText = styled.span`
     font-size: 12px;
     line-height: 16px;

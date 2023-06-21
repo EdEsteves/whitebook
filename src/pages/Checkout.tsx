@@ -5,7 +5,7 @@ import PlansSection from "../components/PlansSection";
 const Checkout = () => {
 	return (
 		<>
-			<Header backPath={'/'} />
+			<Header logout={true} />
 			<div className='container'>
 				<FormSection />
 				<PlansSection />
