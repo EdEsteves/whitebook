@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
 import * as S from './styles'
 import FakeLoginContext from '../../contexts/FakeLoginContext';
 
 const FakeLogin: React.FC = () => {
-	const { isLogged, setIsLogged, email, setEmail } = useContext(FakeLoginContext);
+	const { setIsLogged, email, setEmail } = useContext(FakeLoginContext);
   // const [email, setEmail] = useState<string>('');
 
   useEffect(() => {
@@ -13,7 +13,10 @@ const FakeLogin: React.FC = () => {
 			setIsLogged(true)
       setEmail(storedEmail);
     }
-  }, []);
+  }, [
+    setEmail,
+    setIsLogged
+  ]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
