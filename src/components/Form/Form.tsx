@@ -1,38 +1,88 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import * as S from './styles'
 import SelectedPlanContext from '../../contexts/SelectedPlanContext';
 
+import { cardMasker, expireDateMasker, cvvMasker, cpfMasker } from "../../utils/InputMask";
+
 interface FormData {
-  cardNumber: string;
-  expireDate: string;
-  cvv: string;
-  name: string;
-  cpf: string;
-  cupom: string;
-  installments: number;
+  [key: string]: string | number;
 }
 
+const initialErrorState: FormData = {
+  cardNumber: '',
+  expireDate: '',
+  cvv: '',
+  cpf: '',
+};
+const initialFormState: FormData = {
+  cardNumber: '',
+  expireDate: '',
+  cvv: '',
+  name: '',
+  cpf: '',
+  cupom: '',
+  installments: '',
+};
+
+interface FieldConfig {
+  lenght: number;
+  errorMessage: string;
+}
+
+const fieldConfig: { [key: string]: FieldConfig } = {
+  cardNumber: {
+    lenght: 19,
+    errorMessage: 'Cartão de crédito inválido',
+  },
+  expireDate: {
+    lenght: 5,
+    errorMessage: 'Data inválida',
+  },
+  cvv: {
+    lenght: 3,
+    errorMessage: 'CVV inválido',
+  },
+  cpf: {
+    lenght: 14,
+    errorMessage: 'CPF inválido',
+  },
+};
+
+
 const Form: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    cardNumber: '',
-    expireDate: '',
-    cvv: '',
-    name: '',
-    cpf: '',
-    cupom: '',
-    installments: 1,
-  });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [formData, setFormData] = useState<FormData>(initialFormState);
+  const [errors, setErrors] = useState<FormData>(initialErrorState);
+  const [formStatus, setFormStatus] = useState(false);
   const { selectedPlanInfo } = useContext(SelectedPlanContext);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, value: string) => {
+    const { name } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
+  };
+
+  const handleInputBlur = (event: React.FocusEvent<HTMLInputElement>, errorMessage: string) => {
+    const { name } = event.target;
+    if (!formData[name]) {
+      setErrors((prevState) => ({ ...prevState, [name]: errorMessage  }));
+    } else {
+      setErrors((prevState) => ({ ...prevState, [name]: '' }));
+    }
+  };
+
+  const handleInputBlurLength = (event: React.FocusEvent<HTMLInputElement>, fieldName: string) => {
+    const { value } = event.target;
+    const { lenght, errorMessage } = fieldConfig[fieldName];
+    if (value.length !== lenght) {
+      setErrors((prevState) => ({ ...prevState, [fieldName]: errorMessage }));
+    } else {
+      setErrors((prevState) => ({ ...prevState, [fieldName]: '' }));
+    }
   };
 
   const handleinstallmentsChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -47,11 +97,13 @@ const Form: React.FC = () => {
     event.preventDefault();
     // Handle form submission logic here
     console.log(formData);
-    navigate('/checkout/orderplaced')
+    console.log(errors);
+    // navigate('/checkout/orderplaced')
   };
 
   useEffect(() => {
-  }, []);
+    setFormStatus(Object.values(errors).every((value) => value === null || value === '') && !Object.values(formData).every((value) => value === null || value === ''))
+  }, [errors, formData]);
 
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -61,11 +113,13 @@ const Form: React.FC = () => {
           id="cardNumber"
           name="cardNumber"
           value={formData.cardNumber}
-          onChange={handleInputChange}
+          onBlur={(event) => handleInputBlurLength(event, 'cardNumber')}
+          onChange={(event) => handleInputChange(event, cardMasker(event.target.value))}
           placeholder='0000 0000 0000 0000'
           required={true}
         />
         <S.Label htmlFor="cardNumber">Número do cartão</S.Label>
+        {errors.cardNumber && <S.ErrorMsg>{errors.cardNumber}</S.ErrorMsg>}
       </S.Fieldset>
       <S.Fieldset className='double'>
         <div className='validate'>
@@ -74,11 +128,13 @@ const Form: React.FC = () => {
             id="expireDate"
             name="expireDate"
             value={formData.expireDate}
-            onChange={handleInputChange}
+            onBlur={(event) => handleInputBlurLength(event, 'expireDate')}
+            onChange={(event) => handleInputChange(event, expireDateMasker(event.target.value))}
             placeholder='MM/AA'
             required={true}
           />
           <S.Label htmlFor="expireDate">Validade</S.Label>
+          {errors.expireDate && <S.ErrorMsg>{errors.expireDate}</S.ErrorMsg>}
         </div>
         <div className='cvv'>
           <S.Input
@@ -86,11 +142,13 @@ const Form: React.FC = () => {
             id="cvv"
             name="cvv"
             value={formData.cvv}
-            onChange={handleInputChange}
+            onBlur={(event) => handleInputBlurLength(event, 'cvv')}
+            onChange={(event) => handleInputChange(event, cvvMasker(event.target.value))}
             placeholder='000'
             required={true}
           />
           <S.Label htmlFor="cvv">CVV</S.Label>
+          {errors.cvv && <S.ErrorMsg>{errors.cvv}</S.ErrorMsg>}
         </div>      
       </S.Fieldset>
       <S.Fieldset>
@@ -99,11 +157,13 @@ const Form: React.FC = () => {
           id="name"
           name="name"
           value={formData.name}
-          onChange={handleInputChange}
+          onBlur={(event) => handleInputBlur(event, 'O campo nome é obrigatório')}
+          onChange={(event) => handleInputChange(event, event.target.value)}
           placeholder='Seu nome'
           required={true}
         />
         <S.Label htmlFor="name">Nome impresso no cartão</S.Label>
+        {errors.name && <S.ErrorMsg>{errors.name}</S.ErrorMsg>}
       </S.Fieldset>
       <S.Fieldset>
         <S.Input
@@ -111,11 +171,13 @@ const Form: React.FC = () => {
           id="cpf"
           name="cpf"
           value={formData.cpf}
-          onChange={handleInputChange}
+          onBlur={(event) => handleInputBlurLength(event, 'cpf')}
+          onChange={(event) => handleInputChange(event, cpfMasker(event.target.value))}
           placeholder='000.000.000-00'
           required={true}
         />
         <S.Label htmlFor="cpf">CPF</S.Label>
+        {errors.cpf && <S.ErrorMsg>{errors.cpf}</S.ErrorMsg>}
       </S.Fieldset>
       <S.Fieldset>
         <S.Input
@@ -123,9 +185,8 @@ const Form: React.FC = () => {
           id="cupom"
           name="cupom"
           value={formData.cupom}
-          onChange={handleInputChange}
+          onChange={(event) => handleInputChange(event, event.target.value)}
           placeholder='Insira aqui'
-          required={true}
         />
         <S.Label htmlFor="cupom">Cupom</S.Label>
       </S.Fieldset>
@@ -144,7 +205,7 @@ const Form: React.FC = () => {
           ))}
         </S.Select>
       </S.Fieldset>
-      <S.Button type="submit">Finalizar pagamento</S.Button>
+      <S.Button disabled={!formStatus} type="submit">Finalizar pagamento</S.Button>
     </S.Form>
   );
 };

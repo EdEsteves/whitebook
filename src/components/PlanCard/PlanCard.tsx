@@ -22,9 +22,6 @@ const PlanCard: React.FC<PlanProps> = ({ planInfo, selected}) => {
     setSelectedPlanInfo(planInfo)
   };
 
-  console.log('Plan Info >>', planInfo)
-
-
   return (
     <S.PlanCard onClick={handlePlanClick}>
 

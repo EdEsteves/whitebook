@@ -11,7 +11,7 @@ export const Fieldset = styled.fieldset`
     border: none;
     display: flex;
     flex-direction: column;
-    margin: 0px 0 30px;
+    margin: 0px 0 48px;
     
     &:not(.double) {
         position: relative;
@@ -32,6 +32,16 @@ export const Fieldset = styled.fieldset`
             }
         }
     }
+`
+
+export const ErrorMsg = styled.small`
+    position: absolute;
+    white-space: nowrap;
+    color: #d66157;
+    font-weight: 700;
+    bottom: -20px;
+    order: 3;
+    margin-top: 4px;
 `
 
 export const Input = styled.input`
@@ -60,6 +70,7 @@ export const Input = styled.input`
             color: #666173;
             top: -18px;
             left: 0;
+            cursor: auto;
         }
     }
 `
@@ -79,6 +90,7 @@ export const Label = styled.label`
         position: absolute;
         top: 0;
         transition: all .3s ease;
+        cursor: text;
     }
 `
 
@@ -92,6 +104,8 @@ export const Select = styled.select`
     border-bottom: 1px solid #F4F3F6;
     margin-top: 4px;
     padding-bottom: 10px;
+    background: #fff;
+    border-radius: 0;
 
     option {
         color: #666173;
@@ -109,4 +123,13 @@ export const Button = styled.button`
     text-transform: uppercase;
     border: none;
     cursor: pointer;
+    transition: all .3s ease;
+
+    &:disabled {
+        /* background-color: rgb(201, 197, 212);
+        color: #000; */
+        cursor: auto;
+        pointer-events: none;
+        opacity: .3;
+    }
 `
