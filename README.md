@@ -16,7 +16,7 @@ O projeto possui atualmente 3 telas:
 <br/><br/>
 
 <b>Mas devido a forma que o projeto foi idealizado optei por deixar o fluxo fechado, ou seja, você só consegue acessar essas páginas se realmente fizer o fluxo.</b>
-<br/><br/><br/><br/>
+<br/><br/>
 <b>Caso queira "deslogar" do fakelogin basta deletar o localstorage ou então voltar no botão de back direto no header do site.</b>
 
 
