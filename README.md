@@ -5,6 +5,19 @@ Url do projeto: https://black-ocean-085566710.3.azurestaticapps.net/
 <br/>
 O projeto foi hospedado na azure e é atualizado por meio de um workflow simples de deploy automnatizado quando damos push em alguma tag de versionamento do projeto.
 
+## Fluxo do projeto
+
+O projeto possui atualmente 3 telas:
+
+<br/>
+<li><a href="https://black-ocean-085566710.3.azurestaticapps.net/">Home</a>li>
+<li><a href="https://black-ocean-085566710.3.azurestaticapps.net/checkout">Checkout</a>li>
+<li><a href="https://black-ocean-085566710.3.azurestaticapps.net/checkout/orderplaced">Orderplaced</a>li>
+<br/><br/>
+
+<b>Mas devido a forma que o projeto foi idealizado optei por deixar o fluxo fechado, ou seja, você só consegue acessar essas páginas se realmente fizer o fluxo. Caso queira "deslogar" do fakelogin basta deletar o localstorage ou então voltar no botão de back direto no header do site.</b>
+
+
 
 ## Layout
 
@@ -26,7 +39,7 @@ O projeto foi hospedado na azure e é atualizado por meio de um workflow simples
 
 ---
 
-## Available Scripts
+## Scripts disponíveis
 
 O projeto foi inicializado usando o create react app usando o template de typescript
 
@@ -39,6 +52,3 @@ Instala as dependências para rodar o projeto.
 
 Roda o projeto\
 Abra [http://localhost:3000](http://localhost:3000) para ver no browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
