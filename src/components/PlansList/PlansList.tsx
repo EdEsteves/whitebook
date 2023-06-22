@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import PlansListContext from "../../contexts/PlansListContext";
-import SelectedPlanContext from "../../contexts/SelectedPlanContext";
+import PlansListContext from '../../contexts/PlansListContext';
+import SelectedPlanContext from '../../contexts/SelectedPlanContext';
 
 import PlanCard from '../PlanCard';
 

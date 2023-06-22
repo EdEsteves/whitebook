@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { SelectedPlanProvider } from './contexts/SelectedPlanContext';
 import { PlansListProvider } from './contexts/PlansListContext';
 import { FakeLoginProvider } from './contexts/FakeLoginContext';
+import { OrderProvider } from './contexts/OrderContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +17,9 @@ root.render(
     <FakeLoginProvider>
       <PlansListProvider>
         <SelectedPlanProvider>
-          <App />
+          <OrderProvider>
+            <App />
+          </OrderProvider>
         </SelectedPlanProvider>
       </PlansListProvider>
     </FakeLoginProvider>

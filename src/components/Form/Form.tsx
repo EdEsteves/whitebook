@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as S from './styles'
 import SelectedPlanContext from '../../contexts/SelectedPlanContext';
+import FakeLoginContext from '../../contexts/FakeLoginContext';
+import OrderContext from '../../contexts/OrderContext'
+import { OrderInfo } from '../../hooks/useFetchSubscription';
+import useFetchSubscription from '../../hooks/useFetchSubscription';
 
 import { cardMasker, expireDateMasker, cvvMasker, cpfMasker } from "../../utils/InputMask";
+import { applyDiscount } from '../../utils/ApplyDiscount';
+import { discountInstallments } from '../../utils/DiscountInstallments';
 
 interface FormData {
   [key: string]: string | number;
@@ -52,11 +58,14 @@ const fieldConfig: { [key: string]: FieldConfig } = {
 
 
 const Form: React.FC = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormState);
   const [errors, setErrors] = useState<FormData>(initialErrorState);
   const [formStatus, setFormStatus] = useState(false);
   const { selectedPlanInfo } = useContext(SelectedPlanContext);
+  const { setOrderConfirmation } = useContext(OrderContext);
+  const { email } = useContext(FakeLoginContext);
+  const { fetchSubscription } = useFetchSubscription()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, value: string) => {
     const { name } = event.target;
@@ -95,10 +104,36 @@ const Form: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-    console.log(errors);
-    // navigate('/checkout/orderplaced')
+
+    const order: OrderInfo = {
+      couponCode: formData.cupom,
+      creditCardCPF: formData.cpf,
+      creditCardCVV: formData.cvv,
+      creditCardExpirationDate: formData.expireDate,
+      creditCardHolder: formData.name,
+      creditCardNumber: formData.cardNumber,
+      gateway: selectedPlanInfo.gateway,
+      installments: formData.installments,
+      offerId: Math.floor(Math.random() * (100000 - 1 + 1)) + 1,
+      userId: Math.floor(Math.random() * (100000 - 1 + 1)) + 1,
+      id: selectedPlanInfo.id
+    }
+
+    fetchSubscription(order).then((r) => {
+      const orderConfirmation = {
+        planTitle: selectedPlanInfo.title,
+        planDescription: selectedPlanInfo.description,
+        fullPaidPrice: applyDiscount(selectedPlanInfo.fullPrice, 100*selectedPlanInfo.discountPercentage),
+        installmentPrice: `${formData.installments}x ${discountInstallments(selectedPlanInfo.fullPrice, 100*selectedPlanInfo.discountPercentage ,Number(formData.installments))}`,
+        email: email,
+        cpf: formData.cpf
+      }
+      setOrderConfirmation(orderConfirmation)
+
+      navigate('/checkout/orderplaced')
+    }).catch(() => {
+      console.error("Something wen wrong with post!");
+    });
   };
 
   useEffect(() => {
@@ -201,7 +236,7 @@ const Form: React.FC = () => {
         >
           <option value="">Selecionar</option>
           {new Array(selectedPlanInfo.installments).fill(1).map((fill, index) => (
-            <option value={index+1}>{index+1}</option>
+            <option key={index} value={index+1}>{index+1}</option>
           ))}
         </S.Select>
       </S.Fieldset>

@@ -1,14 +1,14 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import PlansListContext from "../../contexts/PlansListContext";
-import FakeLoginContext from "../../contexts/FakeLoginContext";
+import PlansListContext from '../../contexts/PlansListContext';
+import FakeLoginContext from '../../contexts/FakeLoginContext';
 
-import PlansList from "../PlansList/";
+import PlansList from '../PlansList/';
 import Icon from '../Icon';
 import { ReactComponent as IconHelp } from '../../assets/icon-help.svg';
 
 import * as S from './styles'
-import Spinner from "../Spinner/Spinner";
+import Spinner from '../Spinner/Spinner';
 
 const PlansSection = () => {
   const { plansList } = useContext(PlansListContext);
