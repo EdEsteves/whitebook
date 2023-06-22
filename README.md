@@ -3,7 +3,9 @@
 Url do projeto: https://black-ocean-085566710.3.azurestaticapps.net/
 <br/>
 <br/>
-O projeto foi hospedado na azure e é atualizado por meio de um workflow simples de deploy automatizado quando damos push em alguma tag de versionamento do projeto.
+O projeto foi hospedado na azure e possui o deploy automatizado simples usando um workflow no github action que é acionado quando commitamos uma tag de versionamento.
+<br/>
+exemplo: `git push origin tag v1.0.3`
 
 ## Fluxo do projeto
 
@@ -54,3 +56,7 @@ Instala as dependências para rodar o projeto.
 
 Roda o projeto\
 Abra [http://localhost:3000](http://localhost:3000) para ver no browser.
+
+### `npm test`
+
+Roda os testes existentes no projeto
