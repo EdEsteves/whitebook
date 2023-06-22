@@ -1,51 +1,43 @@
 # Whitebook URL
 
 Url do projeto: https://black-ocean-085566710.3.azurestaticapps.net/
+<br/>
+O projeto foi hospedado na azure por meio da azure statick app e é atualizado por meio de um workflow simples de deploy automnatizado quando damos push em alguma tag de versionamento do projeto.
 
 
-## Getting Started with Create React App
+## Layout
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
+<p>O layout do projeto foi disponibilizado no <a href="https://www.figma.com/">Figma</a>. Você pode acessar aqui <a href="https://www.figma.com/file/YqvAioQ7Txa5H3HUb4CYzf/PEBMED_-Testes-Front-end?type=design&node-id=3-208&t=rodc7y7Ir4Vdl7vD-0">link</a>.<br/>
+<br/>
+
+
+## Tecnologias
+
+<br/>
+
+<li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+<li><a href="https://reactjs.org/">ReactJS</a></li>
+<li><a href="https://reactrouter.com/">React Router Dom</a></li>
+<li><a href="https://axios-http.com/">Axios</a></li>
+<li><a href="https://styled-components.com/">Styled Components</a></li>
+<br/>
+
+---
 
 ## Available Scripts
 
-In the project directory, you can run:
+O projeto foi inicializado usando o create react app usando o template de typescript
+
+### `npm install`
+
+Instala as dependências para rodar o projeto.
+
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Roda o projeto\
+Abra [http://localhost:3000](http://localhost:3000) para ver no browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
