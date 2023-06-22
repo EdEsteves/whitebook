@@ -2,7 +2,8 @@
 
 Url do projeto: https://black-ocean-085566710.3.azurestaticapps.net/
 <br/>
-O projeto foi hospedado na azure por meio da azure statick app e é atualizado por meio de um workflow simples de deploy automnatizado quando damos push em alguma tag de versionamento do projeto.
+<br/>
+O projeto foi hospedado na azure e é atualizado por meio de um workflow simples de deploy automnatizado quando damos push em alguma tag de versionamento do projeto.
 
 
 ## Layout
