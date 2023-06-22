@@ -2,11 +2,11 @@ import React, { createContext, useState } from 'react';
 
 import { OrderInfo } from '../hooks/useFetchSubscription';
 
-interface Props {
+type Props = {
   children: React.ReactNode;
 }
 
-export interface OrderConfirmation {
+export type OrderConfirmation = {
   planTitle: string,
   planDescription: string,
   fullPaidPrice: string,

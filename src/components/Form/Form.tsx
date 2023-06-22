@@ -12,7 +12,7 @@ import { cardMasker, expireDateMasker, cvvMasker, cpfMasker } from "../../utils/
 import { applyDiscount } from '../../utils/ApplyDiscount';
 import { discountInstallments } from '../../utils/DiscountInstallments';
 
-interface FormData {
+type FormData = {
   [key: string]: string | number;
 }
 
@@ -32,7 +32,7 @@ const initialFormState: FormData = {
   installments: '',
 };
 
-interface FieldConfig {
+type FieldConfig = {
   lenght: number;
   errorMessage: string;
 }

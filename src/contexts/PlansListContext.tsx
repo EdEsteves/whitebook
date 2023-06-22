@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 import { PlansList } from "../hooks/useFetchPlans";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
 }
 

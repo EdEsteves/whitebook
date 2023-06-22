@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styles';
 
-export interface SpinnerProps {
+export type SpinnerProps = {
   size?: number; // Size of the spinner in pixels
   color?: string; // Color of the spinner
 }

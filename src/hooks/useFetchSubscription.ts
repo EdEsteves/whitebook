@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export interface OrderInfo {
+export type OrderInfo = {
     couponCode: string | number;
     creditCardCPF: string | number;
     creditCardCVV: string | number;

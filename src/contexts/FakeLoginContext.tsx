@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
 }
 

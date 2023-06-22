@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './styles'
 
-interface ButtonProps {
+type ButtonProps = {
   text: string;
   onClick: () => void;
 }

@@ -5,7 +5,7 @@ import { ReactComponent as Chevron } from '../../assets/icon-chevron.svg';
 import { Link } from 'react-router-dom';
 import FakeLoginContext from '../../contexts/FakeLoginContext';
 
-export interface BackButtonProps {
+export type BackButtonProps = {
   backPath?: string;
   logout?: boolean;
 }

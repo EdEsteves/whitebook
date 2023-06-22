@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-interface IconProps {
+type IconProps = {
   svg: ReactElement<SVGSVGElement>;
 }
 
